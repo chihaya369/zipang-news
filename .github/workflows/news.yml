@@ -1,0 +1,44 @@
+name: ZIPANG local news
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  push:
+    branches: [main]
+    paths: ['collect.py', 'sources.json', '.github/workflows/news.yml']
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: zipang-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: site
+        uses: actions/configure-pages@v5
+      - name: Read previous published revision
+        env:
+          SITE: ${{ steps.site.outputs.base_url }}
+        run: |
+          http=$(curl -L -sS --retry 2 --max-time 30 -o previous.json -w '%{http_code}' "$SITE/news.json")
+          case "$http" in
+            200) python -c 'import json; assert json.load(open("previous.json"))["schema"] == "zipang-news/1"' ;;
+            404) rm -f previous.json ;;
+            *) echo "Previous feed unavailable: HTTP $http"; exit 1 ;;
+          esac
+      - name: Collect official feeds
+        run: python collect.py --previous previous.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deploy
+        uses: actions/deploy-pages@v4
+

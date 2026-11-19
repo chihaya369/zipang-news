@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mie",
+    "source": "三重県 報道発表",
+    "region": "東海",
+    "pref": "三重県",
+    "area": "三重県",
+    "feed": "https://www.pref.mie.lg.jp/app/rss/hodo_rss/"
+  },
+  {
+    "id": "nagoya",
+    "source": "名古屋市 イベント情報",
+    "region": "東海",
+    "pref": "愛知県",
+    "area": "名古屋市",
+    "feed": "https://www.city.nagoya.jp/rss/rss_event.rss"
+  },
+  {
+    "id": "kani",
+    "source": "可児市 イベント情報",
+    "region": "東海",
+    "pref": "岐阜県",
+    "area": "可児市",
+    "feed": "https://www.city.kani.lg.jp/services/rdf/rss10/30570.xml"
+  }
+]
