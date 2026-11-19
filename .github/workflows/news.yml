@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths: ['collect.py', 'sources.json', '.github/workflows/news.yml']
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -39,6 +40,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
+      - name: Wait for the Pages artifact to become visible
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in {1..12}; do
+            if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '.artifacts[].name' | grep -Fxq github-pages; then exit 0; fi
+            sleep 5
+          done
+          exit 1
       - id: deploy
         uses: actions/deploy-pages@v4
 
