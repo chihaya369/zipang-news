@@ -22,5 +22,77 @@
     "pref": "岐阜県",
     "area": "可児市",
     "feed": "https://www.city.kani.lg.jp/services/rdf/rss10/30570.xml"
+  },
+  {
+    "id": "sapporo",
+    "region": "北海道",
+    "pref": "北海道",
+    "area": "札幌市",
+    "source": "札幌市 新着情報",
+    "feed": "https://www.city.sapporo.jp/new/shinchaku.xml"
+  },
+  {
+    "id": "sendai",
+    "region": "東北",
+    "pref": "宮城県",
+    "area": "仙台市",
+    "source": "仙台市 新着情報",
+    "feed": "https://www.city.sendai.jp/shinchaku/shinchaku.xml"
+  },
+  {
+    "id": "tokorozawa",
+    "region": "関東",
+    "pref": "埼玉県",
+    "area": "所沢市",
+    "source": "所沢市 新着情報",
+    "feed": "https://www.city.tokorozawa.saitama.jp/rss_news.xml"
+  },
+  {
+    "id": "niigata",
+    "region": "北陸・甲信越",
+    "pref": "新潟県",
+    "area": "新潟市",
+    "source": "新潟市 新着情報",
+    "feed": "https://www.city.niigata.lg.jp/rss_news.xml"
+  },
+  {
+    "id": "osaka",
+    "region": "近畿",
+    "pref": "大阪府",
+    "area": "大阪市",
+    "source": "大阪市 イベント",
+    "feed": "https://www.city.osaka.lg.jp/event/rss/rss_new.xml"
+  },
+  {
+    "id": "hiroshima",
+    "region": "中国",
+    "pref": "広島県",
+    "area": "広島市",
+    "source": "広島市 新着情報",
+    "feed": "https://www.city.hiroshima.lg.jp/news.rss"
+  },
+  {
+    "id": "matsuyama",
+    "region": "四国",
+    "pref": "愛媛県",
+    "area": "松山市",
+    "source": "松山市 新着情報",
+    "feed": "https://www.city.matsuyama.ehime.jp/rss_news.xml"
+  },
+  {
+    "id": "fukuoka",
+    "region": "九州",
+    "pref": "福岡県",
+    "area": "福岡市",
+    "source": "福岡市 観光・魅力・イベント",
+    "feed": "https://www.city.fukuoka.lg.jp/data/open/rss/RSS_7236.xml"
+  },
+  {
+    "id": "naha",
+    "region": "沖縄",
+    "pref": "沖縄県",
+    "area": "那覇市",
+    "source": "那覇市 新着情報",
+    "feed": "https://www.city.naha.okinawa.jp/news.rss"
   }
 ]
