@@ -80,10 +80,13 @@ def parse(data, src, now):
         loc=urlsplit(link)
         if loc.scheme not in ("https","http") or loc.hostname!=urlsplit(src["feed"]).hostname: continue
         venue=next((v for v in VENUES if v in title),src["area"])
-        subject="と".join(dict.fromkeys(words[:2])) if len(words)>1 else words[0]
+        descriptors=[word for word in dict.fromkeys(words) if word not in venue]
+        subject="・".join(descriptors[:2]) or "催し"
+        if "花火" in words and "クルーズ" in words: subject="花火を楽しむクルーズ"
+        if "図書館" in title and "ガイドツアー" in words: subject="図書館見学"
         key=sha256(link.encode()).hexdigest()[:20]
         item=dict(id=key,sourceId=src["id"],source=src["source"],region=src["region"],pref=src["pref"],place=src["area"],
-                  topics=topics,title=venue+"の"+subject+"案内",published=dt.isoformat(timespec="minutes"),url=link)
+                  topics=topics,title=venue+"　"+subject,published=dt.isoformat(timespec="minutes"),url=link)
         item["day"]=event_day(fields,title,dt)
         if item["day"] and item["day"]<now.date().isoformat(): continue
         if key not in found or found[key]["published"]<item["published"]: found[key]=item
